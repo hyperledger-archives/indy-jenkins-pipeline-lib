@@ -35,27 +35,27 @@ The repository contains a library of reusable [Jenkins Pipeline](https://jenkins
 
 ```groovy
     indyAutoMergePR {
-        node: 'node-label-with-linux-docker',
+        node = 'node-label-with-linux-docker'
                 // default: indyConfig.indyNodeLabel
-        prDetails: [
+        prDetails = [
             owner: 'github-repo-owner',
                 // default: parsed from env.CHANGE_URL or env.ghprbPullLink
             repo: 'github-repo-name',
                 // default: parsed from env.CHANGE_URL or env.ghprbPullLink
             number: 1, // PR number
                 // default: env.CHANGE_ID or env.ghprbPullId
-        ],
-        credentialsId: 'GitHub-token-with-PRs-write-permissions',
+        ]
+        credentialsId = 'GitHub-token-with-PRs-write-permissions'
                 // default: indyConfig.credentials.gitHubToken
-        approveMessage: 'comment-in-PR',
+        approveMessage = 'comment-in-PR'
                 // default: 'Approved'
-        statusState: 'pending|success|error|failure',
+        statusState = 'pending|success|error|failure'
                 // default: 'success'
-        statusUrl: 'status-url',
+        statusUrl = 'status-url'
                 // default: env.RUN_DISPLAY_URL
-        statusDescr: 'status-description',
+        statusDescr = 'status-description'
                 // default: 'Success: This commit looks good for auto merge'
-        statusContext: 'status-context'
+        statusContext = 'status-context'
                 // default: indyConfig.prStatusContext
     }
 ```
@@ -90,12 +90,12 @@ The repository contains a library of reusable [Jenkins Pipeline](https://jenkins
 
 ```groovy
     indyIsTested {
-        node: 'node-label-with-linux-docker',
+        node = 'node-label-with-linux-docker'
                 // default: indyConfig.indyNodeLabel
-        branch: 'PRs-target-branch-filter',
+        branch = 'PRs-target-branch-filter'
                 // default: env.$BRANCH_NAME
-        contexts: ['PRs-context-filters', ...], //default: ['continuous-integration/jenkins/pr-merge']
-        age: 5      // filter PRs by number of days from the last update, default: 7
+        contexts = ['PRs-context-filters', ...], //default: ['continuous-integration/jenkins/pr-merge']
+        age = 5      // filter PRs by number of days from the last update, default: 7
                 // default: 7
     }
 ```
@@ -149,11 +149,11 @@ Please check [docs](https://plugins.jenkins.io/slack) for details about message 
 
 ```groovy
     indyPackaging {
-        node: 'node-label-with-linux-docker',
+        node = 'node-label-with-linux-docker'
                 // default: indyConfig.indyNodeLabel
-        builders: [deb: debBuilderClosure],
+        builders = [deb: debBuilderClosure]
                 // default: not-defined
-        version: '1.2.3'
+        version = '1.2.3'
                 // default: not-defined
     }
 ```
@@ -166,15 +166,15 @@ Please check [docs](https://plugins.jenkins.io/slack) for details about message 
 ```groovy
     indyPipeline {
         :
-        timeout: 90, // minutes
+        timeout = 90 // minutes
                 // default: not defined
-        onFail: onFailCallback,
+        onFail = onFailCallback
                 // default: not defined
-        onSuccess: onSuccessCallback,
+        onSuccess = onSuccessCallback
                 // default: not defined
-        // format: stageName, stageConfigClosure],
+        // format = stageName, stageConfigClosure],
         // config closures are empty by default
-        stages: [
+        stages = [
             ['indyVerifyStatic', {}],
             ['indyVerify', {
                 ...
@@ -196,13 +196,13 @@ Please check [docs](https://plugins.jenkins.io/slack) for details about message 
 
 ```groovy
     indyPublish {
-        packageName: 'myPackage',
+        packageName = 'myPackage'
             // default: not defined
-        releaseVersion: '1.2.3',
+        releaseVersion = '1.2.3'
             // default: not defined
-        projectName: 'myProject',
+        projectName = 'myProject'
             // default: not defined
-        builders: [deb: debBuilderClosure],
+        builders = [deb: debBuilderClosure]
             // default: not defined
     }
 ```
@@ -212,9 +212,9 @@ Please check [docs](https://plugins.jenkins.io/slack) for details about message 
 
 ```groovy
     indyVerify {
-        labels: ['linux', 'windows'],
+        labels = ['linux', 'windows']
                 // default: not defined
-        tests: [
+        tests = [
             common: [
                 resFile: { "test-result-filename.${NODE_NAME}.xml" },
                     // default: 'test-result.txt'
@@ -228,9 +228,9 @@ Please check [docs](https://plugins.jenkins.io/slack) for details about message 
                     // default: not defined
             ],
             // ...
-        ],
+        ]
                 // default: not defined
-        dockers: [
+        dockers = [
             ubuntu: [
                 imgName: 'ci-image-name',
                     // default: not defined
@@ -250,9 +250,9 @@ Please check [docs](https://plugins.jenkins.io/slack) for details about message 
 
 ```groovy
     indyVerifyStatic {
-        node: 'node-label-with-linux-docker',
+        node = 'node-label-with-linux-docker'
                 // default: indyConfig.indyNodeLabel
-        dockerEnv: [
+        dockerEnv = [
             imgName: 'ci-image-name',
                 // default: 'code-validation'
             dockerfile: "path-to-dockerfile",
