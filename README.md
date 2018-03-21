@@ -94,7 +94,7 @@ The repository contains a library of reusable [Jenkins Pipeline](https://jenkins
                 // default: indyConfig.indyNodeLabel
         branch = 'PRs-target-branch-filter'
                 // default: env.$BRANCH_NAME
-        contexts = ['PRs-context-filters', ...], //default: ['continuous-integration/jenkins/pr-merge']
+        contexts = ['PRs-context-filters', ...] //default: ['continuous-integration/jenkins/pr-merge']
         age = 5      // filter PRs by number of days from the last update, default: 7
                 // default: 7
     }
