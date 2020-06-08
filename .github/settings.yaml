@@ -1,0 +1,9 @@
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+repository:
+  name: indy-jenkins-pipeline-lib
+  description: Archive of indy-jenkins-pipeline-lib
+  archived: true
+  private: false
